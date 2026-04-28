@@ -8,22 +8,65 @@ To write a program to predict the marks scored by a student using the simple lin
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+
+1. Load the dataset into a DataFrame and explore its contents to understand the data structure.
+2. Separate the dataset into independent (X) and dependent (Y) variables, and split them into training and testing sets.
+3. Create a linear regression model and fit it using the training data.
+4. Predict the results for the testing set and plot the training and testing sets with fitted lines.
+5.Calculate error metrics (MSE, MAE, RMSE) to evaluate the model’s performance.
 
 ## Program:
 ```
 /*
 Program to implement the simple linear regression model for predicting the marks scored.
-Developed by: 
-RegisterNumber:  
+Developed by: KARTHIKEYAN A
+RegisterNumber:  212225230131
 */
 ```
+````
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Sample data
+
+X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
+Y = np.array([35, 50, 65, 70, 85])
+
+# Create model
+model = LinearRegression()
+
+# Train model
+model.fit(X, Y)
+
+# Get slope and intercept
+m = model.coef_[0]
+b = model.intercept_
+
+print("Slope (m):", m)
+print("Intercept (b):", b)
+
+# ---- Prediction ----
+x_input = float(input("Enter hours studied: "))
+predicted_marks = model.predict([[x_input]])
+print("Predicted Marks:", predicted_marks[0])
+
+# ---- Plot ----
+Y_pred = model.predict(X)
+
+plt.scatter(X, Y, label="Actual Data")
+plt.plot(X, Y_pred, label="Regression Line")
+plt.xlabel("Hours Studied")
+plt.ylabel("Marks Scored")
+plt.title("Simple Linear Regression (Using sklearn)")
+plt.legend()
+plt.show()
+````
 
 ## Output:
-![simple linear regression model for predicting the marks scored](sam.png)
+
+<img width="805" height="658" alt="image" src="https://github.com/user-attachments/assets/9846ad8f-8006-4166-ac9a-25e89edb785b" />
 
 
 ## Result:
